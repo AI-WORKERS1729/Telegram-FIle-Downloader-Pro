@@ -1,0 +1,4 @@
+.env
+sessions/
+my_account.session
+__pycache__/

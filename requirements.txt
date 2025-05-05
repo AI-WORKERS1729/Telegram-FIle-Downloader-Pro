@@ -3,3 +3,4 @@ pyrogram
 tgcrypto
 python-dotenv
 hypercorn
+tqdm

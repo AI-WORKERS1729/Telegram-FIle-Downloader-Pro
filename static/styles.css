@@ -1,0 +1,191 @@
+:root {
+  --bg-color: #f7f9ff;
+  --text-color: #1e1e1e;
+  --card-bg: #ffffffcc;
+  --primary: #5a66f1;
+  --gradient: linear-gradient(135deg, #5a66f1, #4ac1ff);
+  --glow: 0 0 12px rgba(90, 102, 241, 0.4);
+}
+
+[data-bs-theme="dark"] {
+  --bg-color: #101010;
+  --text-color: #f1f1f1;
+  --card-bg: #1e1e1ecc;
+  --primary: #77aaff;
+  --gradient: linear-gradient(135deg, #202020, #353535);
+  --glow: 0 0 12px rgba(119, 170, 255, 0.3);
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.background-doodle {
+  background-image: url('/static/doodles/background-doodle.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 100%;
+  height: 300px;
+  background: radial-gradient(circle at center, #4ac1ff30 0%, transparent 80%);
+  animation: float 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(30px);
+  }
+}
+
+.file-card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.file-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15), var(--glow);
+}
+
+.file-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, var(--primary), transparent 30%, var(--primary));
+  animation: spin 6s linear infinite;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.file-icon {
+  font-size: 2.4rem;
+  color: var(--primary);
+  filter: drop-shadow(0 0 4px rgba(90, 102, 241, 0.2));
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-type-badge {
+  font-size: 0.7rem;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.2em 0.5em;
+  border-radius: 0.4em;
+  box-shadow: 0 0 8px rgba(90, 102, 241, 0.3);
+}
+
+.file-meta,
+.file-size {
+  font-size: 0.85rem;
+}
+
+.file-size {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), var(--glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle i {
+  font-size: 1.3rem;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glitter background effect */
+@keyframes glitter {
+
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+}
+
+.glitter {
+  background: linear-gradient(45deg, #ffffff44, #5a66f122, #ffffff44);
+  background-size: 400% 400%;
+  animation: glitter 4s linear infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}

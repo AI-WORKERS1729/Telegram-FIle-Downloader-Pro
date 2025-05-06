@@ -3,3 +3,4 @@ sessions/
 my_account.session
 __pycache__/
 downloads/
+web_session.session
